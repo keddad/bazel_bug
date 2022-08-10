@@ -1,0 +1,23 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+cc_library(
+    name = "bar",
+    hdrs = [], # No exported interface
+    srcs = [
+        "bar.cpp",
+        "bar.h",
+    ]
+)
+
+cc_library(
+    name = "foo",
+    hdrs = [
+        "foo.h",
+    ],
+    srcs = [
+        "foo.cpp",
+    ],
+    deps = [
+        ":bar",
+    ],
+)
